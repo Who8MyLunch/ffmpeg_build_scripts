@@ -4,7 +4,7 @@
 # http://yasm.tortall.net/Download.html
 # http://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
 
-NAME_PACKAGE="yasm"
+NAME_PACKAGE="vid.stab"
 
 PATH_PROJECT="$HOME/Projects/ffmpeg"
 
@@ -33,18 +33,17 @@ if [ -d "$PATH_PROJECT/$NAME_PACKAGE" ]; then
     # git pull   # 
 else
     # Does not exist.  Clone the repo.
-    #
-    # git clone git://github.com/yasm/yasm.git
-    
+    # http://wiki.webmproject.org/ffmpeg/building-with-libvpx
+
+    # git clone https://github.com/georgmartius/vid.stab
+
     cd $NAME_PACKAGE
 fi
 
 #################################################
 
-# https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
 
-./autogen.sh --prefix="$PATH_BUILD" --bindir="$PATH_BIN"
+cmake -DCMAKE_INSTALL_PREFIX:PATH="$PATH_BUILD"
 
 make
 make install
-make distclean

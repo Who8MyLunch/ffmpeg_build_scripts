@@ -4,7 +4,7 @@
 # http://yasm.tortall.net/Download.html
 # http://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
 
-NAME_PACKAGE="yasm"
+NAME_PACKAGE="fdk-aac"
 
 PATH_PROJECT="$HOME/Projects/ffmpeg"
 
@@ -33,17 +33,21 @@ if [ -d "$PATH_PROJECT/$NAME_PACKAGE" ]; then
     # git pull   # 
 else
     # Does not exist.  Clone the repo.
-    #
-    # git clone git://github.com/yasm/yasm.git
-    
+    # http://www.videolan.org/developers/x264.html
+    # git clone git://github.com/mstorsjo/fdk-aac
+
+
     cd $NAME_PACKAGE
 fi
 
 #################################################
 
 # https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
+# https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu#libx264
 
-./autogen.sh --prefix="$PATH_BUILD" --bindir="$PATH_BIN"
+autoreconf -fiv
+
+./configure --prefix="$PATH_BUILD" --disable-shared
 
 make
 make install

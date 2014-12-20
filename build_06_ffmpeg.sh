@@ -4,7 +4,7 @@
 # http://yasm.tortall.net/Download.html
 # http://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
 
-NAME_PACKAGE="yasm"
+NAME_PACKAGE="ffmpeg"
 
 PATH_PROJECT="$HOME/Projects/ffmpeg"
 
@@ -33,18 +33,37 @@ if [ -d "$PATH_PROJECT/$NAME_PACKAGE" ]; then
     # git pull   # 
 else
     # Does not exist.  Clone the repo.
-    #
-    # git clone git://github.com/yasm/yasm.git
-    
+    # http://wiki.webmproject.org/ffmpeg/building-with-libvpx
+
+    # git clone git://source.ffmpeg.org/ffmpeg.git
+
     cd $NAME_PACKAGE
 fi
 
 #################################################
 
-# https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
+# https://trac.ffmpeg.org/wiki/CompilationGuide/Generic#LD_LIBRARY_PATHandldconfig
 
-./autogen.sh --prefix="$PATH_BUILD" --bindir="$PATH_BIN"
+./configure \
+  --prefix="$PATH_BUILD" \
+  --bindir="$PATH_BIN" \
+  --enable-gpl \
+  --enable-libfdk-aac \
+  --enable-libfreetype \
+  --enable-libmp3lame \
+  --enable-libopus \
+  --enable-libtheora \
+  --enable-libvorbis \
+  --enable-libvpx \
+  --enable-libx264 \
+  --enable-nonfree \
+  --enable-libvidstab
+  # --extra-cflags="-I$PATH_BUILD/include" \
+  # --extra-ldflags="-L$PATH_BUILD/lib" \
+  # --enable-libass \
+  # --enable-x11grab
 
 make
 make install
 make distclean
+hash -r

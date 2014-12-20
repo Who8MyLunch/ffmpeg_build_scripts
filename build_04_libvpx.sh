@@ -4,7 +4,7 @@
 # http://yasm.tortall.net/Download.html
 # http://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
 
-NAME_PACKAGE="yasm"
+NAME_PACKAGE="libvpx"
 
 PATH_PROJECT="$HOME/Projects/ffmpeg"
 
@@ -33,18 +33,20 @@ if [ -d "$PATH_PROJECT/$NAME_PACKAGE" ]; then
     # git pull   # 
 else
     # Does not exist.  Clone the repo.
-    #
-    # git clone git://github.com/yasm/yasm.git
-    
+    # http://wiki.webmproject.org/ffmpeg/building-with-libvpx
+
+    # git clone http://git.chromium.org/webm/libvpx.git
+
     cd $NAME_PACKAGE
 fi
 
 #################################################
 
-# https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
+# https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu#libvpx
+# http://wiki.webmproject.org/ffmpeg/building-with-libvpx
 
-./autogen.sh --prefix="$PATH_BUILD" --bindir="$PATH_BIN"
+./configure --prefix="$PATH_BUILD" --disable-examples
 
 make
 make install
-make distclean
+make clean
