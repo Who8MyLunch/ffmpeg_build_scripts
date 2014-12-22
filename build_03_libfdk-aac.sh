@@ -15,9 +15,9 @@ PATH_SOURCES="$PATH_PROJECT/sources"
 PATH_BUILD="$PATH_PROJECT/build"
 
 PATH_BIN="$HOME/bin"
-PKG_CONFIG_PATH="$PATH_BUILD/lib/pkgconfig"
 
-PATH="$PATH_BIN:$PATH"
+export PKG_CONFIG_PATH="$PATH_BUILD/lib/pkgconfig"
+export PATH="$PATH_BIN:$PATH"
 
 #################################################
 
@@ -34,8 +34,8 @@ if [ -d "$PATH_PROJECT/$NAME_PACKAGE" ]; then
 else
     # Does not exist.  Clone the repo.
     # http://www.videolan.org/developers/x264.html
-    # git clone git://github.com/mstorsjo/fdk-aac
 
+    # git clone git://github.com/mstorsjo/fdk-aac
 
     cd $NAME_PACKAGE
 fi
@@ -47,8 +47,22 @@ fi
 
 autoreconf -fiv
 
-./configure --prefix="$PATH_BUILD" --disable-shared
+./configure --prefix="$PATH_BUILD" --enable-static --disable-shared
 
 make
 make install
 make distclean
+
+
+
+# If you ever happen to want to link against installed libraries
+# in a given directory, LIBDIR, you must either use libtool, and
+# specify the full pathname of the library, or use the `-LLIBDIR'
+# flag during linking and do at least one of the following:
+#    - add LIBDIR to the `LD_LIBRARY_PATH' environment variable
+#      during execution
+#    - add LIBDIR to the `LD_RUN_PATH' environment variable
+#      during linking
+#    - use the `-Wl,-rpath -Wl,LIBDIR' linker flag
+#    - have your system administrator add LIBDIR to `/etc/ld.so.conf'
+

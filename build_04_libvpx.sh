@@ -15,9 +15,9 @@ PATH_SOURCES="$PATH_PROJECT/sources"
 PATH_BUILD="$PATH_PROJECT/build"
 
 PATH_BIN="$HOME/bin"
-PKG_CONFIG_PATH="$PATH_BUILD/lib/pkgconfig"
 
-PATH="$PATH_BIN:$PATH"
+export PKG_CONFIG_PATH="$PATH_BUILD/lib/pkgconfig"
+export PATH="$PATH_BIN:$PATH"
 
 #################################################
 
@@ -30,7 +30,7 @@ if [ -d "$PATH_PROJECT/$NAME_PACKAGE" ]; then
     cd $NAME_PACKAGE
 
     # uncomment this to update repository
-    # git pull   # 
+    git pull
 else
     # Does not exist.  Clone the repo.
     # http://wiki.webmproject.org/ffmpeg/building-with-libvpx
@@ -45,8 +45,8 @@ fi
 # https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu#libvpx
 # http://wiki.webmproject.org/ffmpeg/building-with-libvpx
 
-./configure --prefix="$PATH_BUILD" --disable-examples
+./configure --prefix="$PATH_BUILD" --disable-examples --enable-runtime-cpu-detect
 
 make
 make install
-make clean
+make distclean

@@ -15,9 +15,9 @@ PATH_SOURCES="$PATH_PROJECT/sources"
 PATH_BUILD="$PATH_PROJECT/build"
 
 PATH_BIN="$HOME/bin"
-PKG_CONFIG_PATH="$PATH_BUILD/lib/pkgconfig"
 
-PATH="$PATH_BIN:$PATH"
+export PKG_CONFIG_PATH="$PATH_BUILD/lib/pkgconfig"
+export PATH="$PATH_BIN:$PATH"
 
 #################################################
 
@@ -30,7 +30,7 @@ if [ -d "$PATH_PROJECT/$NAME_PACKAGE" ]; then
     cd $NAME_PACKAGE
 
     # uncomment this to update repository
-    # git pull   # 
+    # git pull 
 else
     # Does not exist.  Clone the repo.
     # http://www.videolan.org/developers/x264.html
@@ -50,4 +50,3 @@ fi
 make
 make install
 make distclean
-
