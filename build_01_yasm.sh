@@ -25,7 +25,7 @@ export PATH="$PATH_BIN:$PATH"
 cd $PATH_SOURCES
 
 # Package folder.
-if [ -d "$PATH_PROJECT/$NAME_PACKAGE" ]; then
+if [ -d "$PATH_SOURCES/$NAME_PACKAGE" ]; then
     # already exists
     cd $NAME_PACKAGE
 
@@ -42,6 +42,7 @@ fi
 #################################################
 
 # https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
+#
 
 ./autogen.sh --prefix="$PATH_BUILD" --bindir="$PATH_BIN"
 

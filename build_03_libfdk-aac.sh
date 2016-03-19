@@ -25,17 +25,17 @@ export PATH="$PATH_BIN:$PATH"
 cd $PATH_SOURCES
 
 # Package folder.
-if [ -d "$PATH_PROJECT/$NAME_PACKAGE" ]; then
+if [ -d "$PATH_SOURCES/$NAME_PACKAGE" ]; then
     # already exists
     cd $NAME_PACKAGE
 
     # uncomment this to update repository
-    # git pull   # 
+    git pull
 else
     # Does not exist.  Clone the repo.
     # http://www.videolan.org/developers/x264.html
 
-    # git clone git://github.com/mstorsjo/fdk-aac
+    git clone git://github.com/mstorsjo/fdk-aac
 
     cd $NAME_PACKAGE
 fi
@@ -54,7 +54,6 @@ make install
 make distclean
 
 
-
 # If you ever happen to want to link against installed libraries
 # in a given directory, LIBDIR, you must either use libtool, and
 # specify the full pathname of the library, or use the `-LLIBDIR'
@@ -65,4 +64,3 @@ make distclean
 #      during linking
 #    - use the `-Wl,-rpath -Wl,LIBDIR' linker flag
 #    - have your system administrator add LIBDIR to `/etc/ld.so.conf'
-

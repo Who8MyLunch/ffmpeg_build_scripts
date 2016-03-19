@@ -25,7 +25,7 @@ export PATH="$PATH_BIN:$PATH"
 cd $PATH_SOURCES
 
 # Package folder.
-if [ -d "$PATH_PROJECT/$NAME_PACKAGE" ]; then
+if [ -d "$PATH_SOURCES/$NAME_PACKAGE" ]; then
     # already exists
     cd $NAME_PACKAGE
 
@@ -35,7 +35,7 @@ else
     # Does not exist.  Clone the repo.
     # http://wiki.webmproject.org/ffmpeg/building-with-libvpx
 
-    # git clone http://git.chromium.org/webm/libvpx.git
+    git clone https://chromium.googlesource.com/webm/libvpx
 
     cd $NAME_PACKAGE
 fi
@@ -45,7 +45,8 @@ fi
 # https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu#libvpx
 # http://wiki.webmproject.org/ffmpeg/building-with-libvpx
 
-./configure --prefix="$PATH_BUILD" --disable-examples --enable-runtime-cpu-detect
+./configure --prefix="$PATH_BUILD" --disable-examples --disable-unit-tests \
+            --enable-runtime-cpu-detect
 
 make
 make install

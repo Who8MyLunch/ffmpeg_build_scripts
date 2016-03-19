@@ -25,7 +25,7 @@ export PATH="$PATH_BIN:$PATH"
 cd $PATH_SOURCES
 
 # Package folder.
-if [ -d "$PATH_PROJECT/$NAME_PACKAGE" ]; then
+if [ -d "$PATH_SOURCES/$NAME_PACKAGE" ]; then
     # already exists
     cd $NAME_PACKAGE
 
@@ -35,7 +35,7 @@ else
     # Does not exist.  Clone the repo.
     # http://wiki.webmproject.org/ffmpeg/building-with-libvpx
 
-    # git clone git://source.ffmpeg.org/ffmpeg.git
+    git clone git://source.ffmpeg.org/ffmpeg.git
 
     cd $NAME_PACKAGE
 fi
@@ -45,14 +45,15 @@ fi
 # https://trac.ffmpeg.org/wiki/CompilationGuide/Generic#LD_LIBRARY_PATHandldconfig
 # http://ffmpegmac.net/HowTo/
 
-
 ./configure \
   --prefix="$PATH_BUILD" \
   --bindir="$PATH_BIN" \
+  --pkg-config-flags="--static" \
   --enable-gpl \
   --enable-nonfree \
   --enable-libfreetype \
   --enable-libmp3lame \
+  --enable-libfdk-aac \
   --enable-libopus \
   --enable-libtheora \
   --enable-libvorbis \
@@ -61,14 +62,6 @@ fi
   --enable-libvidstab \
   --enable-static \
   --disable-shared
-  # --enable-runtime-cpudetect \
-  # --arch=x86_64
-  # --enable-libfdk-aac
-  # --enable-libfaac \
-  # --extra-cflags="-I$PATH_BUILD/include" \
-  # --extra-ldflags="-L$PATH_BUILD/lib" \
-  # --enable-libass \
-  # --enable-x11grab
 
 make
 make install

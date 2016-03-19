@@ -25,7 +25,7 @@ export PATH="$PATH_BIN:$PATH"
 cd $PATH_SOURCES
 
 # Package folder.
-if [ -d "$PATH_PROJECT/$NAME_PACKAGE" ]; then
+if [ -d "$PATH_SOURCES/$NAME_PACKAGE" ]; then
     # already exists
     cd $NAME_PACKAGE
 
@@ -42,13 +42,12 @@ fi
 
 #################################################
 
-
+# IMPORTANT:
+# Disable shared & enable static by setting option in CMakeLists.txt from ON to OFF.
 #
-# Note: CMake will cache its settings in the file CMakeCache.txt. Clobber that file if it 
-# looks like changing settings has no ipact.
+# Note: CMake will cache its settings in the file CMakeCache.txt. Clobber that file if it
+# looks like changing settings has no impact.
 
-# Note: Disable shared & enable static by setting option in CMakeLists.txt from ON to OFF.
-#
 cmake -DCMAKE_INSTALL_PREFIX:PATH="$PATH_BUILD"
 
 make

@@ -7,13 +7,13 @@
 
 sudo apt-get update
 
-sudo apt-get -y install autoconf automake build-essential pkg-config libtool \
-    libfreetype6-dev libgpac-dev libass-dev zlib1g-dev texi2html \
-    libtheora-dev libvorbis-dev 
+sudo apt-get -y --force-yes install autoconf automake build-essential libass-dev \
+    libfreetype6-dev libtheora-dev libtool libvorbis-dev pkg-config texinfo \
+    zlib1g-dev cmake
 
-    # libx11-dev libsdl1.2-dev libva-dev libvdpau-dev libxext-dev libxfixes-dev
+# Note: Server users can omit the ffplay and x11grab dependencies:
+#   libsdl1.2-dev libva-dev libvdpau-dev
+#   libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev.
 
-# Server users can omit the ffplay and x11 dependencies: 
-# libsdl1.2-dev libva-dev libvdpau-dev
-# libx11-dev libxext-dev libxfixes-dev
-
+# Install these components instead of compiling from source
+sudo apt-get -y install libmp3lame-dev libopus-dev
