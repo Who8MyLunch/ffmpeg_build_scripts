@@ -15,9 +15,9 @@ PATH_SOURCES="$PATH_PROJECT/sources"
 PATH_BUILD="$PATH_PROJECT/build"
 
 PATH_BIN="$HOME/bin"
-PKG_CONFIG_PATH="$PATH_BUILD/lib/pkgconfig"
 
-PATH="$PATH_BIN:$PATH"
+export PKG_CONFIG_PATH="$PATH_BUILD/lib/pkgconfig"
+export PATH="$PATH_BIN:$PATH"
 
 #################################################
 
@@ -34,8 +34,8 @@ if [ -d "$PATH_PROJECT/$NAME_PACKAGE" ]; then
 else
     # Does not exist.  Clone the repo.
     #
-    # git clone git://github.com/yasm/yasm.git
-    
+    git clone git://github.com/yasm/yasm.git
+
     cd $NAME_PACKAGE
 fi
 

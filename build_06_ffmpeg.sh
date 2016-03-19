@@ -19,7 +19,6 @@ PATH_BIN="$HOME/bin"
 export PKG_CONFIG_PATH="$PATH_BUILD/lib/pkgconfig"
 export PATH="$PATH_BIN:$PATH"
 
-
 #################################################
 
 
@@ -61,7 +60,7 @@ fi
   --enable-libx264 \
   --enable-libvidstab \
   --enable-static \
-  --disable-shared 
+  --disable-shared
   # --enable-runtime-cpudetect \
   # --arch=x86_64
   # --enable-libfdk-aac
