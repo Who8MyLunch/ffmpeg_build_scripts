@@ -30,7 +30,7 @@ if [ -d "$PATH_SOURCES/$NAME_PACKAGE" ]; then
     cd $NAME_PACKAGE
 
     # uncomment this to update repository
-    # git pull
+    git pull
 else
     # Does not exist.  Clone the repo.
     # http://wiki.webmproject.org/ffmpeg/building-with-libvpx

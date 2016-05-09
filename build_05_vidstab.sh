@@ -43,12 +43,14 @@ fi
 #################################################
 
 # IMPORTANT:
-# Disable shared & enable static by setting option in CMakeLists.txt from ON to OFF.
-#
+# Disable shared & enable static by setting BUILD_SHARED_LIBS to OFF.
+# Simplest to make this change at command line settings below, but can also make this
+# change in CMakeList.txt in the source folder.
+# http://stackoverflow.com/questions/18435516/how-to-set-a-cmake-option-at-command-line
 # Note: CMake will cache its settings in the file CMakeCache.txt. Clobber that file if it
 # looks like changing settings has no impact.
 
-cmake -DCMAKE_INSTALL_PREFIX:PATH="$PATH_BUILD"
+cmake -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX:PATH="$PATH_BUILD"
 
 make
 make install

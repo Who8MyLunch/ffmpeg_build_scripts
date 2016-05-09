@@ -5,9 +5,9 @@
 # https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
 # https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu#GettheDependencies
 
-sudo apt-get update
+apt-get update
 
-sudo apt-get -y --force-yes install autoconf automake build-essential libass-dev \
+apt-get -y --force-yes install autoconf automake build-essential libass-dev \
     libfreetype6-dev libtheora-dev libtool libvorbis-dev pkg-config texinfo \
     zlib1g-dev cmake
 
@@ -16,4 +16,4 @@ sudo apt-get -y --force-yes install autoconf automake build-essential libass-dev
 #   libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev.
 
 # Install these components instead of compiling from source
-sudo apt-get -y install libmp3lame-dev libopus-dev
+apt-get -y install libmp3lame-dev libopus-dev
