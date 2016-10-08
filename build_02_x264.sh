@@ -32,7 +32,6 @@ if [ -d "$PATH_SOURCES/$NAME_PACKAGE" ]; then
     # uncomment this to update repository
     git pull
 else
-    echo "$PATH_PROJECT/$NAME_PACKAGE"
     # Does not exist.  Clone the repo.
     # http://www.videolan.org/developers/x264.html
     git clone git://git.videolan.org/x264.git

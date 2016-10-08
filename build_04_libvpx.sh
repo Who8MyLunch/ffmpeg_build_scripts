@@ -34,7 +34,6 @@ if [ -d "$PATH_SOURCES/$NAME_PACKAGE" ]; then
 else
     # Does not exist.  Clone the repo.
     # http://wiki.webmproject.org/ffmpeg/building-with-libvpx
-
     git clone https://chromium.googlesource.com/webm/libvpx
 
     cd $NAME_PACKAGE

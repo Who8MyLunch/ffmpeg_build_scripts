@@ -34,7 +34,6 @@ if [ -d "$PATH_SOURCES/$NAME_PACKAGE" ]; then
 else
     # Does not exist.  Clone the repo.
     # http://www.videolan.org/developers/x264.html
-
     git clone git://github.com/mstorsjo/fdk-aac
 
     cd $NAME_PACKAGE

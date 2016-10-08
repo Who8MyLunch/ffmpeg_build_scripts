@@ -33,7 +33,7 @@ if [ -d "$PATH_SOURCES/$NAME_PACKAGE" ]; then
     git pull
 else
     # Does not exist.  Clone the repo.
-    #
+    # http://yasm.tortall.net/Download.html
     git clone git://github.com/yasm/yasm.git
 
     cd $NAME_PACKAGE

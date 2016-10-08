@@ -33,8 +33,7 @@ if [ -d "$PATH_SOURCES/$NAME_PACKAGE" ]; then
     git pull
 else
     # Does not exist.  Clone the repo.
-    # http://wiki.webmproject.org/ffmpeg/building-with-libvpx
-
+    # http://ffmpegmac.net/HowTo/
     git clone git://source.ffmpeg.org/ffmpeg.git
 
     cd $NAME_PACKAGE
